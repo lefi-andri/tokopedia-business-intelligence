@@ -483,8 +483,8 @@ export default function Dashboard({ dashboard }) {
     const sentimentCardLabel = !filters.sentiment.length
         ? 'Sentimen positif'
         : filters.sentiment.length === 1
-          ? `Porsi ${sentimentMeta[filters.sentiment[0]].label.toLowerCase()}`
-          : 'Porsi sentimen pilihan';
+            ? `Porsi ${sentimentMeta[filters.sentiment[0]].label.toLowerCase()}`
+            : 'Porsi sentimen pilihan';
 
     const kpiDefinitions = [
         {
@@ -562,106 +562,106 @@ export default function Dashboard({ dashboard }) {
 
             </section>
 
-                <div className="sticky top-[76px] z-40 mt-6 rounded-2xl border border-emerald-100 bg-white/95 p-4 shadow-[0_12px_32px_rgba(3,172,14,0.10)] backdrop-blur-xl" aria-busy={isFiltering || isAnalyticsLoading}>
-                    <div className="flex flex-col gap-4 xl:flex-row xl:items-end">
-                        <div className="flex w-full items-center justify-between gap-3 xl:w-auto xl:pr-3">
-                            <div className="flex items-center gap-2">
-                                <div className="flex size-9 items-center justify-center rounded-xl bg-emerald-50 text-[#03ac0e]">
-                                    <Filter className="size-4" />
-                                </div>
-                                <div>
-                                    <p className="text-xs font-extrabold text-slate-800">Filter data</p>
-                                    <p className="text-[10px] text-slate-400">{filterCount ? `${filterCount} filter aktif` : 'Semua data ditampilkan'}</p>
-                                </div>
+            <div className="sticky top-[76px] z-40 mt-6 rounded-2xl border border-emerald-100 bg-white/95 p-4 shadow-[0_12px_32px_rgba(3,172,14,0.10)] backdrop-blur-xl" aria-busy={isFiltering || isAnalyticsLoading}>
+                <div className="flex flex-col gap-4 xl:flex-row xl:items-end">
+                    <div className="flex w-full items-center justify-between gap-3 xl:w-auto xl:pr-3">
+                        <div className="flex items-center gap-2">
+                            <div className="flex size-9 items-center justify-center rounded-xl bg-emerald-50 text-[#03ac0e]">
+                                <Filter className="size-4" />
                             </div>
-                            <div className="flex items-center gap-2">
-                                {(isFiltering || isAnalyticsLoading) && (
-                                    <span className="inline-flex h-9 items-center gap-2 rounded-xl bg-emerald-50 px-3 text-[10px] font-bold text-emerald-800" role="status">
-                                        <LoaderCircle className="size-3.5 animate-spin" />
-                                        Memuat data
-                                    </span>
-                                )}
-                                <button
-                                    type="button"
-                                    onClick={() => setMobileFiltersOpen((open) => !open)}
-                                    className="inline-flex h-9 items-center gap-2 rounded-xl bg-emerald-50 px-3 text-[11px] font-bold text-emerald-800 transition hover:bg-emerald-100 xl:hidden"
-                                    aria-expanded={mobileFiltersOpen}
-                                    aria-controls="dashboard-filter-controls"
-                                >
-                                    {mobileFiltersOpen ? 'Tutup' : 'Atur filter'}
-                                    <ChevronDown className={`size-3.5 transition-transform ${mobileFiltersOpen ? 'rotate-180' : ''}`} />
-                                </button>
+                            <div>
+                                <p className="text-xs font-extrabold text-slate-800">Filter data</p>
+                                <p className="text-[10px] text-slate-400">{filterCount ? `${filterCount} filter aktif` : 'Semua data ditampilkan'}</p>
                             </div>
                         </div>
-                        <div id="dashboard-filter-controls" className={`${mobileFiltersOpen ? 'grid' : 'hidden'} flex-1 gap-3 sm:grid-cols-3 xl:grid`}>
-                            <SelectFilter id="filter-year" label="Periode" value={filters.year} onChange={(value) => setFilter('year', value)} options={filterOptions.years} placeholder="Semua tahun" />
-                            <SelectFilter id="filter-category" label="Kategori" value={filters.category} onChange={(value) => setFilter('category', value)} options={filterOptions.categories} placeholder="Semua kategori" />
-                            <SelectFilter id="filter-sentiment" label="Sentimen" value={filters.sentiment} onChange={(value) => setFilter('sentiment', value)} options={filterOptions.sentiments} placeholder="Semua sentimen" />
+                        <div className="flex items-center gap-2">
+                            {(isFiltering || isAnalyticsLoading) && (
+                                <span className="inline-flex h-9 items-center gap-2 rounded-xl bg-emerald-50 px-3 text-[10px] font-bold text-emerald-800" role="status">
+                                    <LoaderCircle className="size-3.5 animate-spin" />
+                                    Memuat data
+                                </span>
+                            )}
+                            <button
+                                type="button"
+                                onClick={() => setMobileFiltersOpen((open) => !open)}
+                                className="inline-flex h-9 items-center gap-2 rounded-xl bg-emerald-50 px-3 text-[11px] font-bold text-emerald-800 transition hover:bg-emerald-100 xl:hidden"
+                                aria-expanded={mobileFiltersOpen}
+                                aria-controls="dashboard-filter-controls"
+                            >
+                                {mobileFiltersOpen ? 'Tutup' : 'Atur filter'}
+                                <ChevronDown className={`size-3.5 transition-transform ${mobileFiltersOpen ? 'rotate-180' : ''}`} />
+                            </button>
                         </div>
-                        <button
-                            type="button"
-                            onClick={resetFilters}
-                            className={`${mobileFiltersOpen ? 'inline-flex' : 'hidden'} h-10 items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 text-xs font-bold text-slate-600 transition hover:border-emerald-200 hover:bg-emerald-50 xl:inline-flex`}
-                        >
-                            <RefreshCw className="size-3.5" /> Reset
-                        </button>
                     </div>
-                    {dataError && <p className="mt-3 rounded-xl bg-rose-50 px-3 py-2 text-[10px] font-bold text-rose-700" role="alert">{dataError}</p>}
+                    <div id="dashboard-filter-controls" className={`${mobileFiltersOpen ? 'grid' : 'hidden'} flex-1 gap-3 sm:grid-cols-3 xl:grid`}>
+                        <SelectFilter id="filter-year" label="Periode" value={filters.year} onChange={(value) => setFilter('year', value)} options={filterOptions.years} placeholder="Semua tahun" />
+                        <SelectFilter id="filter-category" label="Kategori" value={filters.category} onChange={(value) => setFilter('category', value)} options={filterOptions.categories} placeholder="Semua kategori" />
+                        <SelectFilter id="filter-sentiment" label="Sentimen" value={filters.sentiment} onChange={(value) => setFilter('sentiment', value)} options={filterOptions.sentiments} placeholder="Semua sentimen" />
+                    </div>
+                    <button
+                        type="button"
+                        onClick={resetFilters}
+                        className={`${mobileFiltersOpen ? 'inline-flex' : 'hidden'} h-10 items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 text-xs font-bold text-slate-600 transition hover:border-emerald-200 hover:bg-emerald-50 xl:inline-flex`}
+                    >
+                        <RefreshCw className="size-3.5" /> Reset
+                    </button>
                 </div>
+                {dataError && <p className="mt-3 rounded-xl bg-rose-50 px-3 py-2 text-[10px] font-bold text-rose-700" role="alert">{dataError}</p>}
+            </div>
 
-                <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-                    <KpiCard icon={Activity} label="Ulasan terfilter" value={numberFormat.format(totalSelectedReviews)} description="Satu observasi per review_id" accent="#03ac0e" badge="Review-level" />
-                    <KpiCard icon={Boxes} label="Produk aktif" value={numberFormat.format(filteredProductCount)} description="Produk dengan ulasan pada filter" accent="#5874d8" badge="Distinct" />
-                    <KpiCard icon={Star} label="Rating rata-rata" value={decimalFormat.format(averageRating)} description="Skala penilaian 1 sampai 5" accent="#e6a72f" badge={averageRating >= 4.5 ? 'Sangat baik' : 'Perlu pantau'} badgeTone={averageRating >= 4.5 ? 'positive' : 'neutral'} />
-                    <KpiCard icon={MessageCircleWarning} label={sentimentCardLabel} value={`${decimalFormat.format(selectedShare)}%`} description="Proporsi dari ulasan pada periode" accent="#e06262" badge={!filters.sentiment.length ? 'Positive share' : 'Selected share'} badgeTone={filters.sentiment.includes('negative') ? 'negative' : 'positive'} />
-                    <KpiCard icon={PackageSearch} label="Median terjual" value={numberFormat.format(medianSold)} description="Dihitung pada produk unik" accent="#7a5bd5" badge="Product-level" />
-                </div>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+                <KpiCard icon={Activity} label="Ulasan terfilter" value={numberFormat.format(totalSelectedReviews)} description="Satu observasi per review_id" accent="#03ac0e" badge="Review-level" />
+                <KpiCard icon={Boxes} label="Produk aktif" value={numberFormat.format(filteredProductCount)} description="Produk dengan ulasan pada filter" accent="#5874d8" badge="Distinct" />
+                <KpiCard icon={Star} label="Rating rata-rata" value={decimalFormat.format(averageRating)} description="Skala penilaian 1 sampai 5" accent="#e6a72f" badge={averageRating >= 4.5 ? 'Sangat baik' : 'Perlu pantau'} badgeTone={averageRating >= 4.5 ? 'positive' : 'neutral'} />
+                <KpiCard icon={MessageCircleWarning} label={sentimentCardLabel} value={`${decimalFormat.format(selectedShare)}%`} description="Proporsi dari ulasan pada periode" accent="#e06262" badge={!filters.sentiment.length ? 'Positive share' : 'Selected share'} badgeTone={filters.sentiment.includes('negative') ? 'negative' : 'positive'} />
+                <KpiCard icon={PackageSearch} label="Median terjual" value={numberFormat.format(medianSold)} description="Dihitung pada produk unik" accent="#7a5bd5" badge="Product-level" />
+            </div>
             {featureFlags.kpiDictionary && (
-            <section id="kpi-dictionary" className="mt-5 scroll-mt-[172px]">
-                <article className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
-                    <div className="flex flex-col justify-between gap-3 border-b border-slate-100 px-5 py-5 sm:flex-row sm:items-end xl:px-6">
-                        <div>
-                            <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-emerald-700">KPI dictionary</p>
-                            <h2 className="mt-1 text-lg font-extrabold tracking-tight text-slate-900">Cara membaca KPI dashboard</h2>
-                            <p className="mt-1 max-w-3xl text-xs leading-5 text-slate-400">Setiap KPI mengikuti filter aktif. Grain data ditampilkan agar metrik ulasan dan produk tidak tercampur.</p>
+                <section id="kpi-dictionary" className="mt-5 scroll-mt-[172px]">
+                    <article className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
+                        <div className="flex flex-col justify-between gap-3 border-b border-slate-100 px-5 py-5 sm:flex-row sm:items-end xl:px-6">
+                            <div>
+                                <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] text-emerald-700">KPI dictionary</p>
+                                <h2 className="mt-1 text-lg font-extrabold tracking-tight text-slate-900">Cara membaca KPI dashboard</h2>
+                                <p className="mt-1 max-w-3xl text-xs leading-5 text-slate-400">Setiap KPI mengikuti filter aktif. Grain data ditampilkan agar metrik ulasan dan produk tidak tercampur.</p>
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => setIsKpiDictionaryOpen((isOpen) => !isOpen)}
+                                className="inline-flex items-center gap-2 self-start rounded-full bg-emerald-50 px-3 py-2 text-[10px] font-bold text-emerald-800 transition hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:self-auto"
+                                aria-expanded={isKpiDictionaryOpen}
+                                aria-controls="kpi-dictionary-content"
+                            >
+                                {isKpiDictionaryOpen ? 'Tutup detail' : 'Buka detail'}
+                                <ChevronDown className={`size-3.5 transition-transform ${isKpiDictionaryOpen ? 'rotate-180' : ''}`} />
+                            </button>
                         </div>
-                        <button
-                            type="button"
-                            onClick={() => setIsKpiDictionaryOpen((isOpen) => !isOpen)}
-                            className="inline-flex items-center gap-2 self-start rounded-full bg-emerald-50 px-3 py-2 text-[10px] font-bold text-emerald-800 transition hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 sm:self-auto"
-                            aria-expanded={isKpiDictionaryOpen}
-                            aria-controls="kpi-dictionary-content"
-                        >
-                            {isKpiDictionaryOpen ? 'Tutup detail' : 'Buka detail'}
-                            <ChevronDown className={`size-3.5 transition-transform ${isKpiDictionaryOpen ? 'rotate-180' : ''}`} />
-                        </button>
-                    </div>
 
-                    {isKpiDictionaryOpen && (
-                        <div id="kpi-dictionary-content">
-                            <div className="grid gap-px bg-slate-100 sm:grid-cols-2 xl:grid-cols-5">
-                                {kpiDefinitions.map((kpi) => (
-                                    <div key={kpi.number} className="bg-white p-5">
-                                        <div className="flex items-start justify-between gap-3">
-                                            <span className="flex size-8 items-center justify-center rounded-lg text-[10px] font-extrabold" style={{ backgroundColor: `${kpi.accent}15`, color: kpi.accent }}>{kpi.number}</span>
-                                            <span className="rounded-full bg-slate-100 px-2 py-1 text-[9px] font-extrabold uppercase tracking-wide text-slate-500">{kpi.grain}</span>
+                        {isKpiDictionaryOpen && (
+                            <div id="kpi-dictionary-content">
+                                <div className="grid gap-px bg-slate-100 sm:grid-cols-2 xl:grid-cols-5">
+                                    {kpiDefinitions.map((kpi) => (
+                                        <div key={kpi.number} className="bg-white p-5">
+                                            <div className="flex items-start justify-between gap-3">
+                                                <span className="flex size-8 items-center justify-center rounded-lg text-[10px] font-extrabold" style={{ backgroundColor: `${kpi.accent}15`, color: kpi.accent }}>{kpi.number}</span>
+                                                <span className="rounded-full bg-slate-100 px-2 py-1 text-[9px] font-extrabold uppercase tracking-wide text-slate-500">{kpi.grain}</span>
+                                            </div>
+                                            <p className="mt-4 text-xs font-extrabold text-slate-800">{kpi.title}</p>
+                                            <p className="mt-1 text-xl font-extrabold tracking-[-0.03em] text-slate-950">{kpi.value}</p>
+                                            <div className="mt-3 rounded-lg bg-slate-50 px-2.5 py-2 font-mono text-[9px] font-bold leading-4 text-slate-500">{kpi.formula}</div>
+                                            <p className="mt-3 text-[10px] leading-[1.65] text-slate-500">{kpi.explanation}</p>
                                         </div>
-                                        <p className="mt-4 text-xs font-extrabold text-slate-800">{kpi.title}</p>
-                                        <p className="mt-1 text-xl font-extrabold tracking-[-0.03em] text-slate-950">{kpi.value}</p>
-                                        <div className="mt-3 rounded-lg bg-slate-50 px-2.5 py-2 font-mono text-[9px] font-bold leading-4 text-slate-500">{kpi.formula}</div>
-                                        <p className="mt-3 text-[10px] leading-[1.65] text-slate-500">{kpi.explanation}</p>
-                                    </div>
-                                ))}
-                            </div>
+                                    ))}
+                                </div>
 
-                            <div className="flex gap-2 border-t border-amber-100 bg-amber-50/70 px-5 py-3 text-[10px] font-semibold leading-4 text-amber-900 xl:px-6">
-                                <Info className="mt-0.5 size-3.5 shrink-0" />
-                                <p><strong>Catatan interpretasi:</strong> sold_count adalah atribut produk, bukan transaksi bulanan. Karena itu dashboard menggunakan median pada produk unik dan tidak menjumlahkannya dari seluruh baris ulasan.</p>
+                                <div className="flex gap-2 border-t border-amber-100 bg-amber-50/70 px-5 py-3 text-[10px] font-semibold leading-4 text-amber-900 xl:px-6">
+                                    <Info className="mt-0.5 size-3.5 shrink-0" />
+                                    <p><strong>Catatan interpretasi:</strong> sold_count adalah atribut produk, bukan transaksi bulanan. Karena itu dashboard menggunakan median pada produk unik dan tidak menjumlahkannya dari seluruh baris ulasan.</p>
+                                </div>
                             </div>
-                        </div>
-                    )}
-                </article>
-            </section>
+                        )}
+                    </article>
+                </section>
             )}
 
             <section id="performance" className="mt-5 scroll-mt-[172px] space-y-5">
@@ -1068,7 +1068,7 @@ export default function Dashboard({ dashboard }) {
             </button>
 
             <footer className="mt-6 flex flex-col justify-between gap-2 border-t border-slate-200 py-5 text-[10px] font-medium text-slate-400 sm:flex-row">
-                <p>Commerce Insight BI · Data-driven decision making</p>
+                <p>LEFI ANDRI LESTARI (25630300009) · Commerce Insight BI · Data-driven decision making · Periode 2022 sampai dengan 2025 · Sumber data: https://www.kaggle.com/datasets/salmanabdu/tokopedia-product-reviews-2025</p>
                 <p>{dashboard.meta.grain}</p>
             </footer>
         </DashboardLayout>
